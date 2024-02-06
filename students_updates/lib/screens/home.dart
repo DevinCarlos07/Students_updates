@@ -281,7 +281,6 @@ class _HomeScreenState extends State<HomeScreen> {
     var name = data['name'];
     var contact = data['contact'];
     var place = data['place'];
-
     var imagePath = data['imagePath'];
     Navigator.of(context).push(
       MaterialPageRoute(
