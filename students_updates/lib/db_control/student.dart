@@ -33,7 +33,7 @@ class DatabaseHelper {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
         place TEXT,
-        parent TEXT,
+       
         contact INTEGER,
         imagePath TEXT
       )

@@ -19,7 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _userPlaceController = TextEditingController();
   final TextEditingController _userContactController = TextEditingController();
-  final TextEditingController _userparentController = TextEditingController();
 
   File? _selectedImage;
   @override
@@ -250,7 +249,6 @@ class _HomeScreenState extends State<HomeScreen> {
             _userNameController.clear();
             _userContactController.clear();
             _userPlaceController.clear();
-            _userparentController.clear();
           });
         }
       });
@@ -283,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
     var name = data['name'];
     var contact = data['contact'];
     var place = data['place'];
-    var parent = data['name'];
+
     var imagePath = data['imagePath'];
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -291,7 +289,6 @@ class _HomeScreenState extends State<HomeScreen> {
           name: name,
           place: place,
           contact: contact,
-          parent: name,
           imagePath: imagePath,
         ),
       ),

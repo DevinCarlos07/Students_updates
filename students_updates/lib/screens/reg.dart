@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:students_updates/db_control/student.dart';
-import 'package:students_updates/screens/home.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -21,7 +20,6 @@ class _RegisterState extends State<Register> {
   final _userNameController = TextEditingController();
   final _userPlaceController = TextEditingController();
   final _userContactController = TextEditingController();
-  final _userparentController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -145,22 +143,6 @@ class _RegisterState extends State<Register> {
                           hintText: "Enter Student Place"),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(14.0),
-                    child: TextFormField(
-                      //   If(value==null || value.isEmpty)
-                      //  {
-                      //    return "enter the name"
-
-                      //  },
-
-                      controller: _userparentController,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          labelText: "Parant Name"),
-                    ),
-                  ),
                   SizedBox(
                     height: 10,
                   ),
@@ -187,7 +169,6 @@ class _RegisterState extends State<Register> {
                             _userContactController.text = '';
                             _userNameController.text = '';
                             _userPlaceController.text = '';
-                            _userparentController.text = '';
                           },
                           child: Text('Clear')),
                     ],
@@ -204,7 +185,6 @@ class _RegisterState extends State<Register> {
     final String name = _userNameController.text;
     final int contact = int.tryParse(_userContactController.text) ?? 0;
     final String place = _userPlaceController.text;
-    final String parent = _userparentController.text;
 
     if (name.isNotEmpty && contact > 0 && place.isNotEmpty) {
       final imageFileName =
@@ -218,7 +198,6 @@ class _RegisterState extends State<Register> {
         'place': place,
         'contact': contact,
         'imagePath': imageFile.path,
-        'parent': parent,
       };
       // print(row);
       dbHelper.insert(row).then((id) {
@@ -226,7 +205,7 @@ class _RegisterState extends State<Register> {
           _userNameController.clear();
           _userPlaceController.clear();
           _userContactController.clear();
-          _userparentController.clear();
+
           _selectedImage = null;
         });
       });
